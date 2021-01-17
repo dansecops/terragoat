@@ -6,10 +6,15 @@ variable "subscription_id" {
 
 variable "location" {
   type    = string
-  default = "East US"
+  default = "West Europe"
 }
 
 variable "environment" {
   default     = "dev"
+  description = "Must be all lowercase letters or numbers"
+}
+
+variable "resource_group_name" {
+  default     = "dangora-terragoat-rg"
   description = "Must be all lowercase letters or numbers"
 }
