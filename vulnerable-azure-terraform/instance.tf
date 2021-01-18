@@ -57,3 +57,10 @@ resource azurerm_windows_virtual_machine "windows_machine" {
     environment = var.environment
   }
 }
+
+resource "azurerm_user_assigned_identity" "example" {
+  resource_group_name = azurerm_resource_group.vbdgroup.name
+  location            = azurerm_resource_group.vbdgroup.location
+
+  name = "dg-managed-identity"
+}
