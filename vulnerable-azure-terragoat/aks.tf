@@ -8,7 +8,7 @@
 #   }
 #   default_node_pool {
 #     name       = "default"
-#     vm_size    = "Stansdard_D2_v2"
+#     vm_size    = "Standard_D2_v2"
 #     node_count = 2
 #   }
 #   addon_profile {
