@@ -12,7 +12,7 @@ resource azurerm_app_service_plan "appplan" {
 resource azurerm_app_service "app-service1" {
   app_service_plan_id = azurerm_app_service_plan.appplan.id
   location            = var.location
-  name                = "app-service-${var.environment}${random_integer.rnd_int.result}"
+  name                = "dg-app-service-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name = azurerm_resource_group.vbdgroup.name
   https_only          = false
   site_config {
@@ -23,7 +23,7 @@ resource azurerm_app_service "app-service1" {
 resource azurerm_app_service "app-service2" {
   app_service_plan_id = azurerm_app_service_plan.appplan.id
   location            = var.location
-  name                = "app-service-${var.environment}${random_integer.rnd_int.result}"
+  name                = "dg-app-service-${var.environment}${random_integer.rnd_int.result}"
   resource_group_name = azurerm_resource_group.vbdgroup.name
   https_only          = true
 
