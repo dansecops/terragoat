@@ -29,7 +29,7 @@ resource "azurerm_postgresql_server" "pgresrv" {
   geo_redundant_backup_enabled = false
   auto_grow_enabled            = true
   administrator_login          = "sqladmin"
-  administrator_login_password = random_string.password.result
+  administrator_login_password = "h1L!^#qi*Y$2"
   version                      = "9.5"
   ssl_enforcement_enabled      = false
 }

@@ -10,7 +10,7 @@ variable "location" {
 }
 
 variable "environment" {
-  default     = "dev"
+  default     = "sandbox"
   description = "Must be all lowercase letters or numbers"
 }
 

@@ -1,4 +1,4 @@
-export TERRAGOAT_RESOURCE_GROUP="dg-terragoat-rg"
+export TERRAGOAT_RESOURCE_GROUP="dg-terragoat-rmtstate"
 export TERRAGOAT_STATE_STORAGE_ACCOUNT="dgstgtgt"
 export TERRAGOAT_STATE_CONTAINER="dgcontainer"
 export TF_VAR_environment="sandbox"
@@ -19,11 +19,10 @@ ACCOUNT_KEY=$(az storage account keys list --resource-group $TERRAGOAT_RESOURCE_
 # Create blob container
 az storage container create --name $TERRAGOAT_STATE_CONTAINER --account-name $TERRAGOAT_STATE_STORAGE_ACCOUNT --account-key $ACCOUNT_KEY
 
-
 cd terraform/
 terraform init -backend-config="resource_group_name=$TERRAGOAT_RESOURCE_GROUP" \
-    -backend-config "storage_account_name=$TERRAGOAT_STATE_STORAGE_ACCOUNT" \
+    -backend-config="storage_account_name=$TERRAGOAT_STATE_STORAGE_ACCOUNT" \
     -backend-config="container_name=$TERRAGOAT_STATE_CONTAINER" \
-    -backend-config "key=$TF_VAR_environment.terraform.tfstate"
+    -backend-config="key=$TF_VAR_environment.terraform.tfstate"
 
 terraform apply

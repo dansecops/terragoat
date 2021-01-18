@@ -5,10 +5,10 @@ variable "subscription_id" {
 
 variable "location" {
   type    = string
-  default = "UK South"
+  default = "West Europe"
 }
 
 variable "environment" {
-  default     = "test"
+  default     = "sandbox"
   description = "Must be all lowercase letters or numbers"
 }
