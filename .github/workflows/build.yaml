@@ -5,23 +5,24 @@ on:
       - master
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.7]
+    runs-on: [self-hosted, public, linux, x64]
     steps:
       - uses: actions/checkout@v2
+        name: Checkout repo
+        with:
+          fetch-depth: 0
+      - name: Run yor action
+        uses: bridgecrewio/yor-action@main
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.7
       - name: Update documentation
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch --tags
           git pull
-
           latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
           echo "latest tag: $latest_tag"
           new_tag=$(echo $latest_tag | awk -F. -v a="$1" -v b="$2" -v c="$3" '{printf("%d.%d.%d", $1+a, $2+b , $3+1)}')
